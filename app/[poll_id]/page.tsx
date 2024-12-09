@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { PARTYKIT_URL } from "@/app/env";
+// import { PARTYKIT_URL } from "@/app/env";
 import type { Poll } from "@/app/types";
 import PollUI from "@/components/PollUI";
 import Balloon from "@/components/Balloon";
@@ -12,7 +12,7 @@ export default async function PollPage({
   const pollId = params.poll_id;
 
   // 🎈 TODO: send a GET request to the PartyKit room
-  const req = await fetch(`${PARTYKIT_URL}/party/${pollId}`, {
+  const req = await fetch(`${process.env.NEXT_PUBLIC_PARTYKIT_HOST}/party/${pollId}`, {
     method: "GET",
     next: {
       revalidate: 0

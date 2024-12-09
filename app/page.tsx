@@ -3,7 +3,6 @@ import PollMaker from "@/components/PollMaker";
 import Balloon from "@/components/Balloon";
 import { Poll } from "@/app/types";
 import { redirect } from "next/navigation";
-import { PARTYKIT_URL } from "./env";
 import Input from "@/components/Input";
 
 const randomId = () => Math.random().toString(36).substring(2, 10);
@@ -28,7 +27,7 @@ export default function Home() {
     };
 
     // 🎈 TODO: send a POST request to a PartyKit room
-    await fetch(`${PARTYKIT_URL}/party/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_PARTYKIT_HOST}/party/${id}`, {
       method: "POST",
       body: JSON.stringify(poll),
       headers: {
